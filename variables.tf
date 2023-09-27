@@ -558,37 +558,37 @@ variable "luks_name" {
 
 
 variable "kdump_enable" {
-  type = bool
+  type        = bool
   description = "Configures the kdump on Worker Nodes"
-  default = true
+  default     = true
 }
 variable "kdump_commandline_remove" {
-  type = string
+  type        = string
   description = "This option removes arguments from the current kdump command line"
-  default = "hugepages hugepagesz slub_debug quiet log_buf_len swiotlb hugetlb_cma ignition.firstboot"
+  default     = "hugepages hugepagesz slub_debug quiet log_buf_len swiotlb hugetlb_cma ignition.firstboot"
 }
 variable "kdump_commandline_append" {
-  type = string
+  type        = string
   description = "This option appends arguments to the current command line"
-  default = "irqpoll maxcpus=1 noirqdistrib reset_devices cgroup_disable=memory numa=off udev.children-max=2 ehea.use_mcs=0 panic=10 kvm_cma_resv_ratio=0 transparent_hugepage=never novmcoredd hugetlb_cma=0 srcutree.big_cpu_lim=0"
+  default     = "irqpoll maxcpus=1 noirqdistrib reset_devices cgroup_disable=memory numa=off udev.children-max=2 ehea.use_mcs=0 panic=10 kvm_cma_resv_ratio=0 transparent_hugepage=never novmcoredd hugetlb_cma=0 srcutree.big_cpu_lim=0"
 }
 variable "kdump_kexec_args" {
-  type = string
+  type        = string
   description = "Configure which kexec to use in kdump"
-  default = "--dt-no-old-root -s"
+  default     = "--dt-no-old-root -s"
 }
 variable "kdump_img" {
-  type = string
+  type        = string
   description = "What is the image type used for kdump"
-  default = "vmlinuz"
+  default     = "vmlinuz"
 }
 variable "kdump_log_path" {
-  type = string
+  type        = string
   description = "The file system path in which the kdump saves the vmcore file"
-  default = "/var/crash"
+  default     = "/var/crash"
 }
 variable "kdump_crash_kernel_memory" {
-  type = string
+  type        = string
   description = "Configure crashkernel memory for kernel core dump analysis"
-  default = "2G-4G:384M,4G-16G:512M,16G-64G:1G,64G-128G:2G,128G-:4G"
+  default     = "2G-4G:384M,4G-16G:512M,16G-64G:1G,64G-128G:2G,128G-:4G"
 }
