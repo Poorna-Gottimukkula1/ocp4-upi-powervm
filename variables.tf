@@ -565,17 +565,17 @@ variable "kdump_enable" {
 variable "kdump_commandline_remove" {
   type        = string
   description = "This option removes arguments from the current kdump command line"
-  default     = "hugepages hugepagesz slub_debug quiet log_buf_len swiotlb hugetlb_cma ignition.firstboot"
+  default     = "hugepages hugepagesz slub_debug quiet log_buf_len swiotlb"
 }
 variable "kdump_commandline_append" {
   type        = string
   description = "This option appends arguments to the current command line"
-  default     = "irqpoll maxcpus=1 noirqdistrib reset_devices cgroup_disable=memory numa=off udev.children-max=2 ehea.use_mcs=0 panic=10 kvm_cma_resv_ratio=0 transparent_hugepage=never novmcoredd hugetlb_cma=0 srcutree.big_cpu_lim=0"
+  default     = "irqpoll maxcpus=1 reset_devices cgroup_disable=memory mce=off numa=off udev.children-max=2 panic=10 rootflags=nofail acpi_no_memhotplug transparent_hugepage=never nokaslr novmcoredd hest_disable"
 }
 variable "kdump_kexec_args" {
   type        = string
   description = "Configure which kexec to use in kdump"
-  default     = "--dt-no-old-root -s"
+  default     = "-s"
 }
 variable "kdump_img" {
   type        = string
