@@ -83,6 +83,14 @@ locals {
     luks_options           = var.luks_options
     luks_wipe_volume       = var.luks_wipe_volume
     luks_name              = var.luks_name
+
+    kdump_enable              = var.kdump_enable
+    kdump_commandline_remove  = var.kdump_commandline_remove
+    kdump_commandline_append  = var.kdump_commandline_append
+    kdump_kexec_args          = var.kdump_kexec_args
+    kdump_img                 = var.kdump_img
+    kdump_log_path            = var.kdump_log_path
+    kdump_crash_kernel_memory = var.kdump_crash_kernel_memory
   }
 
   upgrade_vars = {

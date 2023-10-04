@@ -5,6 +5,7 @@
     - [PowerVC Details](#powervc-details)
     - [OpenShift Cluster Details](#openshift-cluster-details)
     - [OpenShift Installation Details](#openshift-installation-details)
+    - [FIPS Variable for OpenShift deployment](#fips-variable-for-openshift-deployment)
     - [Misc Customizations](#misc-customizations)
 
 
