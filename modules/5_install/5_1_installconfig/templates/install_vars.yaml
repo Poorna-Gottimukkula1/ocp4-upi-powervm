@@ -87,8 +87,8 @@ luks:
 %{ endif ~}
 kdump:
   enabled: "${kdump_enable}"
-  kdump_commandline_remove: "${kdump_commandline_remove}"
-  kdump_commandline_append: "${kdump_commandline_append}"
+  commandline_remove: "${kdump_commandline_remove}"
+  commandline_append: "${kdump_commandline_append}"
   kexec_args: "${kdump_kexec_args}"
   kdump_img: "${kdump_img}"
   log_path: "${kdump_log_path}"
