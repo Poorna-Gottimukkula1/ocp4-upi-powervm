@@ -119,16 +119,17 @@ resource "null_resource" "pre_install" {
   }
 
   # DHCP config for setting MTU; Since helpernode DHCP template does not support MTU setting
-  provisioner "remote-exec" {
-    inline = [
-      # Set specified mtu for private interface.
-      "sudo ip link set dev $(ip r | grep \"${var.cidr} dev\" | awk '{print $3}') mtu ${var.private_network_mtu}",
-      "echo MTU=${var.private_network_mtu} | sudo tee -a /etc/sysconfig/network-scripts/ifcfg-$(ip r | grep ${var.cidr} | awk '{print $3}')",
-      # DHCP config for setting MTU;
-      "sed -i.mtubak '/option routers/i option interface-mtu ${var.private_network_mtu};' /etc/dhcp/dhcpd.conf",
-      "sudo systemctl restart dhcpd.service"
-    ]
-  }
+provisioner "remote-exec" {
+  inline = [
+    # Set specified MTU for private interface.
+    "sudo ip link set dev $(ip r | grep \"${var.cidr} dev\" | awk '{print $3}') mtu ${var.private_network_mtu}",
+    "echo MTU=${var.private_network_mtu} | sudo tee -a /etc/sysconfig/network-scripts/ifcfg-$(ip r | grep ${var.cidr} | awk '{print $3}')",
+    
+    # Restart Kea DHCP service to apply changes
+    "sudo systemctl restart kea-dhcp4"
+  ]
+}
+
 }
 
 resource "null_resource" "install_config" {
